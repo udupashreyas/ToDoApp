@@ -12,19 +12,19 @@
 		        <p>Your username and password didn't match. Please try again.</p>
 		    {% endif %}
 		    <form method="post" action=".">{% csrf_token %}
-		    	<div class="form-group">
+		    	<!-- <div class="form-group">
 		    		<label for="id_username">Username</label>
-    				<input type="text" class="form-control" name="{{ form.username }}" id="username" placeholder="Enter username">
+    				<input type="text" class="form-control" id="username" placeholder="Enter username">
 		    	</div>
 		    	<div class="form-group">
 				    <label for="id_password">Password</label>
-					<input type="password" class="form-control" name="{{ form.password }}" id="password" placeholder="Password">
-				</div>
-		        <!-- <table border="0">
+					<input type="password" class="form-control" id="password" placeholder="Password">
+				</div> -->
+		        <table>
 		            <tr><th><label for="id_username">Username:</label></th><td>{{ form.username }}</td></tr>
 		            <tr><th><label for="id_password">Password:</label></th><td>{{ form.password }}</td></tr>
 		        </table>
-		        <input type="submit" value="Login" />
+		        <!-- <input type="submit" value="Login" />
 		        <input type="hidden" name="next" value="/home" /> -->
 		        <button type="submit" class="btn btn-primary" value="Login">Submit</button>
 		        <input type="hidden" name="next" value="/home" />
