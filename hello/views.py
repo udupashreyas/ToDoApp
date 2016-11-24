@@ -7,8 +7,7 @@ from .models import Greeting,List
 
 # Create your views here.
 def index(request):
-    times = int(os.environ.get('TIMES',3))
-    return HttpResponse('Hello! ' * times)
+    return render(request, 'index.html')
 
 def db(request):
 	greeting = Greeting()
