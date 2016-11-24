@@ -20,10 +20,12 @@
 				    <label for="id_password">Password</label>
 					<input type="password" class="form-control" id="password" placeholder="Password">
 				</div> -->
-		        <table>
-		            <tr><th><label for="id_username">Username:</label></th><td>{{ form.username }}</td></tr>
-		            <tr><th><label for="id_password">Password:</label></th><td>{{ form.password }}</td></tr>
-		        </table>
+				<div class="table-responsive">
+			        <table class="table">
+			            <tr><th><label for="id_username">Username:</label></th><td>{{ form.username }}</td></tr>
+			            <tr><th><label for="id_password">Password:</label></th><td>{{ form.password }}</td></tr>
+			        </table>
+		    	</div>
 		        <!-- <input type="submit" value="Login" />
 		        <input type="hidden" name="next" value="/home" /> -->
 		        <button type="submit" class="btn btn-primary" value="Login">Submit</button>
