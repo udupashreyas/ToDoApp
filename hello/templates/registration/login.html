@@ -14,11 +14,11 @@
 		    <form method="post" action=".">{% csrf_token %}
 		    	<div class="form-group">
 		    		<label for="id_username">Username</label>
-    				<input type="text" class="form-control" id="username" placeholder="Enter username">
+    				<input type="text" class="form-control" name={{ form.username }} id="username" placeholder="Enter username">
 		    	</div>
 		    	<div class="form-group">
 				    <label for="id_password">Password</label>
-					<input type="password" class="form-control" id="password" placeholder="Password">
+					<input type="password" class="form-control" name={{ form.password }} id="password" placeholder="Password">
 				</div>
 		        <!-- <table border="0">
 		            <tr><th><label for="id_username">Username:</label></th><td>{{ form.username }}</td></tr>
