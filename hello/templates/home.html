@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 {% block content %}
-    <p>Welcome {{ user.username }} !!!</p>
-    <a href="/logout/">Logout</a>
+	<div class="jumbotron text-center">
+  		<div class="container">
+    		<p>Welcome {{ user.username }} !!!</p>
+    		<a href="/logout/">Logout</a>
+    	</div>
+    </div>
 {% endblock %}
