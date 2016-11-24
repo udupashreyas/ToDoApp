@@ -12,5 +12,6 @@ import hello.views
 urlpatterns = [
     url(r'^$', hello.views.index, name='index'),
     url(r'^db', hello.views.db, name='db'),
+    url(r'^status', hello.views.status_report, name='status_report'),
     url(r'^admin/', include(admin.site.urls)),
 ]
