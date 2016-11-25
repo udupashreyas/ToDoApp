@@ -51,7 +51,7 @@ def home(request):
         if todo_list.user == request.user:
             todo_dict = {}
             todo_dict['list_object'] = todo_list
-            todo_list['items'] = []
+            todo_dict['items'] = []
             for item in Item.objects.all():
                 if item.todo_list == todo_list:
                     todo_list['items'].append(item.title)
