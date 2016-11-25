@@ -51,6 +51,7 @@ def home(request):
         if todo_list.user == request.user:
             todo_dict = {}
             todo_dict['list_object'] = todo_list
+            todo_list['items'] = todo_list.item_set
             todo_dict['item_count'] = todo_list.item_set.count()
             todo_dict['items_complete'] = todo_list.item_set.filter(completed=True).count()
             todo_dict['percent_complete'] = int(float(todo_dict['items_complete']) / todo_dict['item_count'] * 100)  

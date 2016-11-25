@@ -4,13 +4,22 @@
 	<div class="jumbotron text-center">
   		<div class="container">
     		<p>Welcome {{ user.username }} !!!</p>
-    		<h1>To-do list status report</h1>  
+    		<h3>To-do list status report</h3>  
 			{% for list_dict in todo_listing %}  
-				<h2>{{ list_dict.list_object.title }}</h2>  
-				<ul>  
-					<li>Number of items: {{ list_dict.item_count }}</li>  
-					<li>Number completed: {{ list_dict.items_complete }} ({{ list_dict.percent_complete }}%)</li>  
-				</ul>  
+				<h3>{{ list_dict.list_object.title }}</h3>
+				<div class="row">
+					<div class="col-xs-4">
+					</div>
+					<div class="col-xs-4">  
+						<ul>  
+							<li>Number of items: {{ list_dict.item_count }}</li>  
+							<li>Number completed: {{ list_dict.items_complete }} ({{ list_dict.percent_complete }}%)</li> 
+						</ul>
+					</div>
+					<div class="col-xs-4">
+					</div>
+				</div>
+				<p>{{ list_dict.items }}</p>
 			{% endfor %}  
     		<a href="/logout/"><button class="btn btn-success">Logout</button></a>
     	</div>
