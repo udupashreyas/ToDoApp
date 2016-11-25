@@ -9,7 +9,7 @@ class Greeting(models.Model):
     when = models.DateTimeField('date created', auto_now_add=True)
     
 class List(models.Model):
-	user = models.ForeignKey(User)
+	user = models.ForeignKey(User, null=True)
 	title = models.CharField(max_length=250, unique=True) 
 	def __str__(self):
 		return self.title 
