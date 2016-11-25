@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 
-from .models import Greeting,List
+from .models import Greeting,List,Item
 
 # Create your views here.
 
