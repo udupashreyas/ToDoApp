@@ -66,7 +66,10 @@ def home(request):
                     todo_dict['items'].append(item.title)
             todo_dict['item_count'] = todo_list.item_set.count()
             todo_dict['items_complete'] = todo_list.item_set.filter(completed=True).count()
-            todo_dict['percent_complete'] = int(float(todo_dict['items_complete']) / todo_dict['item_count'] * 100)  
+            if todo_dict['item_count']:
+                todo_dict['percent_complete'] = int(float(todo_dict['items_complete']) / todo_dict['item_count'] * 100)
+            else:
+                todo_dict['percent_complete'] = 0
             todo_listing.append(todo_dict)
     return render_to_response(
     'home.html',
