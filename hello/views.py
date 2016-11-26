@@ -69,7 +69,7 @@ def home(request):
             todo_listing.append(todo_dict)
     return render_to_response(
     'home.html',
-    { 'user': request.user, 'todo_listing' : todo_listing }
+    { 'user': request.user, 'todo_listing' : todo_listing, 'form' : form}
     )
 
 def index(request):
