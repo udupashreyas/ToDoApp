@@ -52,9 +52,9 @@ def home(request):
         if form.is_valid():
             nl = List(user = request.user, title = form.cleaned_data['new_list'])
             nl.save()
-            return HttpResponseRedirect('/home/')
-    else:
-        form = NewListForm()
+            #return HttpResponseRedirect('/home/')
+    #else:
+    form = NewListForm()
     todo_listing = []  
     for todo_list in List.objects.all():
         if todo_list.user == request.user:
