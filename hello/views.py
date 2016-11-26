@@ -45,6 +45,7 @@ def logout_page(request):
     return HttpResponseRedirect('/')
  
 @login_required
+@csrf_protect
 def home(request):
     if request.method == 'POST':
         form = NewListForm(request.POST)
