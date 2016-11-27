@@ -48,13 +48,18 @@ def logout_page(request):
 @csrf_protect
 def home(request):
     if request.method == 'POST':
-        form = NewListForm(request.POST)
-        if form.is_valid():
-            nl = List(user = request.user, title = form.cleaned_data['new_list'])
-            nl.save()
-            #return HttpResponseRedirect('/home/')
-    #else:
-    form = NewListForm()
+        if 'new_list' in request.POST:
+            l_form = NewListForm(request.POST)
+            if form.is_valid():
+                nl = List(user = request.user, title = l_form.cleaned_data['new_list'])
+                nl.save()
+        elif 'new_item' in request.POST:
+            i_form = NewItemForm(request.POST)
+            if form.is_valid():
+                ni = Item(title = i_form.cleaned_data['title'], priority = form.cleaned_data['priority'], todo_list = form.cleaned_data['todo_list'])
+                ni.save()
+    l_form = NewListForm()
+    i_form = NewItemForm()
     todo_listing = []  
     for todo_list in List.objects.all():
         if todo_list.user == request.user:

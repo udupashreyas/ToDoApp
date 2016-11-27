@@ -1,6 +1,7 @@
 import re
 from django import forms
 from django.contrib.auth.models import User
+from .models import *
 from django.utils.translation import ugettext_lazy as _
  
 class RegistrationForm(forms.Form):
@@ -25,3 +26,8 @@ class RegistrationForm(forms.Form):
 
 class NewListForm(forms.Form):
     new_list = forms.CharField(label='new list', max_length=100)
+
+class NewItemForm(forms.Form):
+    title = forms.CharField(label='title', max_length=100)
+    priority = forms.ChoiceField(choices=[(1,'Low'),(2,'Normal'),(3,'High')])
+    p_list = forms.ModelChoiceField(queryset=List.objects.all().order_by('title'))
