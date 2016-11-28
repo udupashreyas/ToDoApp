@@ -8,14 +8,9 @@
 			<div class="row">
 				<div class="col-xs-4">
 					<h4>Add new to-do list</h4>
-						<!-- <form action="/home/" method="post">
-						    {% csrf_token %}
-						    {{ form }}
-						    <input type="submit" value="Submit" />
-						</form> -->
 					<form action="/home/" method="post">{% csrf_token %}
 						<div class="form-group">
-				    		<label for="id_username">Title</label>
+				    		<label for="list_title">Title</label>
 			   				<input type="text" class="form-control" name="new_list" id="new_list" placeholder="Enter title">
 				    	</div>
 						<button type="submit" class="btn btn-success" name="new_list" value="Register">Submit</button>
@@ -24,25 +19,27 @@
 				<div class="col-xs-4">  
 					{% for list_dict in todo_listing %}  
 						<h3>{{ list_dict.list_object.title }}</h3>
-						<ul>  
-							<li>Number of items: {{ list_dict.item_count }}</li>  
-							<li>Number completed: {{ list_dict.items_complete }} ({{ list_dict.percent_complete }}%)</li>
-						</ul>
+						<p>Number of items: {{ list_dict.item_count }}</p>  
+						<p>Number completed: {{ list_dict.items_complete }} ({{ list_dict.percent_complete }}%)</p>
 						<h4>Items</h4>
-						<ul>
-							{% for item in list_dict.items %}
-								<li>{{ item }}</li>
-							{% endfor %}
-						</ul>
+						{% for item in list_dict.items %}
+							<p>{{ item }}</p>
+						{% endfor %}
 					{% endfor %}
 				</div>
 				<div class="col-xs-4">
 					<h4>Add new item</h4>
 					<form action="/home/" method="post">{% csrf_token %}
-						<!-- <div class="form-group">
-				    		<label for="id_username">Title</label>
+						<div class="form-group">
+				    		<label for="item_title">Title</label>
 			   				<input type="text" class="form-control" name="title" id="title" placeholder="Enter title">
-				    	</div> -->
+				    	</div>
+				    	<div class="form-group">
+						  {{ i_form.priority }}
+						</div>
+						<div class="form-group">
+						  {{ i_form.p_list }}
+						</div>
 				    	{{ i_form }}
 						<button type="submit" class="btn btn-success" name="new_item" value="Register">Submit</button>
 					</form>
