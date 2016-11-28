@@ -35,12 +35,12 @@
 				<div class="col-xs-8">  
 					{% for list_dict in todo_listing %}  
 						<h3>{{ list_dict.list_object.title }}</h3>
-						<ul list-style="none">
+						<ul style="list-style:none">
 							<li>Number of items: {{ list_dict.item_count }}</li>  
 							<li>Number completed: {{ list_dict.items_complete }} ({{ list_dict.percent_complete }}%)</li>
 						</ul>
 						<h4>Items</h4>
-						<ul list-style="none">
+						<ul style="list-style:none">
 							{% for item in list_dict.items %}
 								<li>{{ item }}</li>
 							{% endfor %}
