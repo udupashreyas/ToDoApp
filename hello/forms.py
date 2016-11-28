@@ -29,5 +29,5 @@ class NewListForm(forms.Form):
 
 class NewItemForm(forms.Form):
     title = forms.CharField(label='title', max_length=100)
-    priority = forms.ChoiceField(choices=[(1,'Low'),(2,'Normal'),(3,'High')], widget=forms.Select(attrs={'class':'formControl'}))
-    p_list = forms.ModelChoiceField(queryset=List.objects.all().order_by('title'), widget=forms.Select(attrs={'class':'formControl'}))
+    priority = forms.ChoiceField(choices=[(1,'Low'),(2,'Normal'),(3,'High')], widget=forms.Select(attrs={'class':'form-control'}))
+    p_list = forms.ModelChoiceField(queryset=List.objects.all().order_by('title'), widget=forms.Select(attrs={'class':'form-control'}))
