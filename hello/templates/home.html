@@ -6,7 +6,7 @@
     		<p>Welcome {{ user.username }} !!!</p>
     		<h3>To-do list status report</h3>
 			<div class="row">
-				<div class="col-xs-4">
+				<div class="col-xs-6">
 					<h4>Add new to-do list</h4>
 					<form action="/home/" method="post">{% csrf_token %}
 						<div class="form-group">
@@ -15,8 +15,24 @@
 				    	</div>
 						<button type="submit" class="btn btn-success" name="new_list" value="Register">Submit</button>
 					</form>
+					<h4>Add new item</h4>
+					<form action="/home/" method="post">{% csrf_token %}
+						<div class="form-group">
+				    		<label for="item_title">Title</label>
+			   				<input type="text" class="form-control" name="title" id="title" placeholder="Enter title">
+				    	</div>
+				    	<div class="form-group">
+				    		<label for="item_priority">Priority</label>
+						  	{{ i_form.priority }}
+						</div>
+						<div class="form-group">
+							<label for="item_list">List</label>
+						  	{{ i_form.p_list }}
+						</div>
+						<button type="submit" class="btn btn-success" name="new_item" value="Register">Submit</button>
+					</form>
 				</div>
-				<div class="col-xs-4">  
+				<div class="col-xs-6">  
 					{% for list_dict in todo_listing %}  
 						<h3>{{ list_dict.list_object.title }}</h3>
 						<p>Number of items: {{ list_dict.item_count }}</p>  
@@ -26,23 +42,6 @@
 							<p>{{ item }}</p>
 						{% endfor %}
 					{% endfor %}
-				</div>
-				<div class="col-xs-4">
-					<h4>Add new item</h4>
-					<form action="/home/" method="post">{% csrf_token %}
-						<div class="form-group">
-				    		<label for="item_title">Title</label>
-			   				<input type="text" class="form-control" name="title" id="title" placeholder="Enter title">
-				    	</div>
-				    	<div class="form-group">
-						  {{ i_form.priority }}
-						</div>
-						<div class="form-group">
-						  {{ i_form.p_list }}
-						</div>
-				    	{{ i_form }}
-						<button type="submit" class="btn btn-success" name="new_item" value="Register">Submit</button>
-					</form>
 				</div>
 			</div>  
     		<a href="/logout/"><button class="btn btn-success">Logout</button></a>
