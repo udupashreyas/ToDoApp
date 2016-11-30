@@ -32,19 +32,26 @@
 						<button type="submit" class="btn btn-success" name="new_item" value="Register">Submit</button>
 					</form>
 				</div>
-				<div class="col-xs-8">  
-					{% for list_dict in todo_listing %}  
-						<h3>{{ list_dict.list_object.title }}</h3>
-						<ul style="list-style:none">
-							<li>Number of items: {{ list_dict.item_count }}</li>  
-							<li>Number completed: {{ list_dict.items_complete }} ({{ list_dict.percent_complete }}%)</li>
-						</ul>
-						<h4>Items</h4>
-						<ul style="list-style:none">
-							{% for item in list_dict.items %}
-								<li>{{ item }}</li>
-							{% endfor %}
-						</ul>
+				<div class="col-xs-8">
+					<select id="selectList">
+						{% for list_dict in todo_listing %}
+							<option value={{ list_dict.list_object.title }}>{{ list_dict.list_object.title }}</option>
+						{% endfor %}
+					</select>
+					{% for list_dict in todo_listing %}
+						<div id={{ list_dict.list_object.title }} class="group">
+							<h3>{{ list_dict.list_object.title }}</h3>
+							<ul style="list-style:none">
+								<li>Number of items: {{ list_dict.item_count }}</li>  
+								<li>Number completed: {{ list_dict.items_complete }} ({{ list_dict.percent_complete }}%)</li>
+							</ul>
+							<h4>Items</h4>
+							<ul style="list-style:none">
+								{% for item in list_dict.items %}
+									<li>{{ item }}</li>
+								{% endfor %}
+							</ul>
+						</div>
 					{% endfor %}
 				</div>
 			</div>  
@@ -52,3 +59,14 @@
     	</div>
     </div>
 {% endblock %}
+
+<script type="text/javascript">
+$(document).ready(function () {
+  $('.group').hide();
+  $('#' + {{todo_listing[0].list_object.title}}).show();
+  $('#selectList').change(function () {
+    $('.group').hide();
+    $('#'+$(this).val()).show();
+  })
+});
+</script>
