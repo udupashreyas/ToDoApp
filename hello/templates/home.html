@@ -33,7 +33,7 @@
 					</form>
 				</div>
 				<div class="col-xs-8">
-					<select id="selectList">
+					<select id="selectList" class="form-control">
 						{% for list_dict in todo_listing %}
 							<option value={{ list_dict.list_object.title }}>{{ list_dict.list_object.title }}</option>
 						{% endfor %}
@@ -41,16 +41,12 @@
 					{% for list_dict in todo_listing %}
 						<div id={{ list_dict.list_object.title }} class="group">
 							<h3>{{ list_dict.list_object.title }}</h3>
-							<ul style="list-style:none">
-								<li>Number of items: {{ list_dict.item_count }}</li>  
-								<li>Number completed: {{ list_dict.items_complete }} ({{ list_dict.percent_complete }}%)</li>
-							</ul>
+							<p><b>Number of items</b>: {{ list_dict.item_count }}</p>  
+							<p><b>Number completed</b>: {{ list_dict.items_complete }} ({{ list_dict.percent_complete }}%)</p>
 							<h4>Items</h4>
-							<ul style="list-style:none">
-								{% for item in list_dict.items %}
-									<li>{{ item }}</li>
-								{% endfor %}
-							</ul>
+							{% for item in list_dict.items %}
+								<p>{{ item }}</p>
+							{% endfor %}
 						</div>
 					{% endfor %}
 				</div>
