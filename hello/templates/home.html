@@ -58,7 +58,7 @@
 <script type="text/javascript">
 $(document).ready(function () {
   $('.group').hide();
-  $('#' + todo_listing[todo_listing.keys()[0]]).show();
+  $('#' + {{todo_listing[todo_listing.keys()[0]]}}).show();
   $('#selectList').change(function () {
     $('.group').hide();
     $('#'+$(this).val()).show();
