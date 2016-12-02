@@ -59,7 +59,10 @@ def home(request):
                 ni = Item(title = i_form.cleaned_data['title'], priority = i_form.cleaned_data['priority'], todo_list = i_form.cleaned_data['p_list'])
                 ni.save()
         elif 'done' in request.POST:
-            pass
+            i = request.POST['done']
+            it = Item.objects.get(title=i)
+            it.completed = True
+            it.save()
         elif 'remove' in request.POST:
             pass
     l_form = NewListForm()
