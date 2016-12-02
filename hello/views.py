@@ -64,7 +64,9 @@ def home(request):
             it.completed = True
             it.save()
         elif 'remove' in request.POST:
-            pass
+            i = request.POST['remove']
+            it = Item.objects.get(title=i)
+            it.delete()
     l_form = NewListForm()
     i_form = NewItemForm()
     todo_listing = []  
