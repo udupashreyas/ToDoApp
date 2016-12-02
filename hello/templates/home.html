@@ -45,7 +45,21 @@
 							<p><b>Number completed</b>: {{ list_dict.items_complete }} ({{ list_dict.percent_complete }}%)</p>
 							<h4>Items</h4>
 							{% for item in list_dict.items %}
-								<p>{{ item }}</p>
+								<div class="row">
+									<div class="col-xs-6">
+										<p>{{ item }}</p>
+									</div>
+									<div class="col-xs-3">
+										<form action="/home/" method="post"> {% csrf_token %}
+										    <button name="done" value={{ item }} class="form-control">Done</button>
+										</form>
+									</div>
+									<div class="col-xs-3">
+										<form action="/home/" method="post"> {% csrf_token %}
+										    <button name="remove" value={{ item }} class="form-control">Remove</button>
+										</form>
+									</div>
+								</div>
 							{% endfor %}
 						</div>
 					{% endfor %}

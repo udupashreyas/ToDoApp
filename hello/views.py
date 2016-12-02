@@ -58,6 +58,10 @@ def home(request):
             if i_form.is_valid():
                 ni = Item(title = i_form.cleaned_data['title'], priority = i_form.cleaned_data['priority'], todo_list = i_form.cleaned_data['p_list'])
                 ni.save()
+        elif 'done' in request.POST:
+            pass
+        elif 'remove' in request.POST:
+            pass
     l_form = NewListForm()
     i_form = NewItemForm()
     todo_listing = []  
