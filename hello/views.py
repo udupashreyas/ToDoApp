@@ -75,10 +75,10 @@ def home(request):
             todo_dict = {}
             todo_dict['list_object'] = todo_list
             todo_dict['list_title'] = todo_list.title
-            todo_dict['items'] = []
+            todo_dict['items'] = {}
             for item in Item.objects.all():
                 if item.todo_list == todo_list:
-                    todo_dict['items'].append(item.title)
+                    todo_dict['items'][item.title] = item.completed
             todo_dict['item_count'] = todo_list.item_set.count()
             todo_dict['items_complete'] = todo_list.item_set.filter(completed=True).count()
             if todo_dict['item_count']:
