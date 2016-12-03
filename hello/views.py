@@ -63,6 +63,11 @@ def home(request):
             it = Item.objects.get(title=i)
             it.completed = True
             it.save()
+        elif 'undone' in request.POST:
+            i = request.POST['undone']
+            it = Item.objects.get(title=i)
+            it.completed = False
+            it.save()
         elif 'remove' in request.POST:
             i = request.POST['remove']
             it = Item.objects.get(title=i)
