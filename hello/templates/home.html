@@ -45,7 +45,7 @@
 							<p><b>Number completed</b>: {{ list_dict.items_complete }} ({{ list_dict.percent_complete }}%)</p>
 							<h4>Items</h4>
 							{% for key,value in list_dict.it.items %}
-								<div class="row">
+								<div class="row" style="margin-top:10px;">
 									{% if value == False %}
 										<div class="col-xs-6">
 											<p>{{ key }}</p>
@@ -66,7 +66,7 @@
 										</div>
 										<div class="col-xs-3">
 											<form action="/home/" method="post"> {% csrf_token %}
-											    <button name="undone" value="{{ key }}" class="form-control">Mark as undone</button>
+											    <button name="undone" value="{{ key }}" class="form-control">Not done</button>
 											</form>
 										</div>
 										<div class="col-xs-3">
