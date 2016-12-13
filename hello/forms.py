@@ -25,7 +25,7 @@ class RegistrationForm(forms.Form):
         return self.cleaned_data
 
 class NewListForm(forms.Form):
-    new_list = forms.CharField(label='new list', max_length=100)
+    new_list = forms.CharField(label='new_list', max_length=100)
 
 class NewItemForm(forms.Form):
     title = forms.CharField(label='title', max_length=100)
