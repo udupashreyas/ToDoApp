@@ -41,6 +41,7 @@
 					{% for list_dict in todo_listing %}
 						<div id={{ list_dict.list_object.title }} class="group">
 							<h3>{{ list_dict.list_object.title }}</h3>
+							<button name="del_list" value="{{ list_dict.list_object.title }}" class="form-control">Delete</button>
 							<p><b>Number of items</b>: {{ list_dict.item_count }}</p>  
 							<p><b>Number completed</b>: {{ list_dict.items_complete }} ({{ list_dict.percent_complete }}%)</p>
 							<h4>Items</h4>
