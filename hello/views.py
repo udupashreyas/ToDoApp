@@ -51,7 +51,7 @@ def home(request):
         if 'new_list' in request.POST:
             l_form = NewListForm(request.POST)
             if l_form.is_valid():
-                nl = List(user = request.user, title = l_form.cleaned_data['new_list'])
+                nl = List(user = request.user, title = l_form.cleaned_data['list_title'])
                 nl.save()
         elif 'new_item' in request.POST:
             i_form = NewItemForm(request.POST)
