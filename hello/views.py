@@ -85,6 +85,8 @@ def home(request):
     l_form = NewListForm()
     i_form = NewItemForm()
     s_form = ShareListForm()
+    i_form.fields['p_list'].queryset = List.objects.filter(users__in=[request.user])
+    s_form.fields['p_list'].queryset = List.objects.filter(users__in=[request.user])
     todo_listing = []  
     for todo_list in List.objects.all():
         if request.user in todo_list.users.all():
