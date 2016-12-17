@@ -30,6 +30,18 @@
 						</div>
 						<button type="submit" class="btn btn-success" name="new_item" value="Register">Submit</button>
 					</form>
+					<h4>Share a form</h4>
+					<form action="/home/" method="post">{% csrf_token %}
+						<div class="form-group">
+							<label for="sharelist">List</label>
+						  	{{ s_form.p_list }}
+						</div>
+						<div class="form-group">
+				    		<label for="item_title">User</label>
+			   				<input type="text" class="form-control" name="other_user" id="other_user" placeholder="Enter username">
+				    	</div>
+						<button type="submit" class="btn btn-success" name="share_list" value="share">Submit</button>
+					</form>
 				</div>
 				<div class="col-xs-8" id="list_summary">
 					<h3>To-do list status report</h3>

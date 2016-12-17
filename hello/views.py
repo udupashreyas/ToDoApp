@@ -51,8 +51,9 @@ def home(request):
         if 'new_list' in request.POST:
             l_form = NewListForm(request.POST)
             if l_form.is_valid():
-                nl = List(user = request.user, title = l_form.cleaned_data['list_title'])
+                nl = List(title = l_form.cleaned_data['list_title'])
                 nl.save()
+                nl.users.add(request.user)
         elif 'new_item' in request.POST:
             i_form = NewItemForm(request.POST)
             if i_form.is_valid():
@@ -76,11 +77,17 @@ def home(request):
             i = request.POST['del_list']
             it = List.objects.get(title=i)
             it.delete()
+        elif 'share_list' in request.POST:
+            s_form = ShareListForm(request.POST)
+            if s_form.is_valid():
+                sl = List.objects.get(title=s_form.cleaned_data['p_list'].title)
+                sl.users.add(User.objects.get(username=s_form.cleaned_data['other_user']))
     l_form = NewListForm()
     i_form = NewItemForm()
+    s_form = ShareListForm()
     todo_listing = []  
     for todo_list in List.objects.all():
-        if todo_list.user == request.user:
+        if request.user in todo_list.users.all():
             todo_dict = {}
             todo_dict['list_object'] = todo_list
             todo_dict['list_title'] = todo_list.title
@@ -97,7 +104,7 @@ def home(request):
             todo_listing.append(todo_dict)
     return render_to_response(
     'home.html',
-    { 'user': request.user, 'todo_listing' : todo_listing, 'l_form' : l_form, 'i_form' : i_form},
+    { 'user': request.user, 'todo_listing' : todo_listing, 'l_form' : l_form, 'i_form' : i_form, 's_form' : s_form},
     RequestContext(request)
     )
 
